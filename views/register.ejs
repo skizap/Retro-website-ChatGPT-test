@@ -1,0 +1,27 @@
+<% layout('layouts/layout') %>
+
+<h1>Register</h1>
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <% errors.forEach(function(error) { %>
+    <div class="alert error"><%= error.msg %></div>
+  <% }); %>
+<% } %>
+<form action="/users/register" method="POST">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required value="<%= typeof name !== 'undefined' ? name : '' %>">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required value="<%= typeof email !== 'undefined' ? email : '' %>">
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required>
+  </div>
+  <div class="form-group">
+    <label for="password2">Confirm Password:</label>
+    <input type="password" name="password2" id="password2" required>
+  </div>
+  <button type="submit">Register</button>
+</form>

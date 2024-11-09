@@ -1,0 +1,19 @@
+<% layout('layouts/layout') %>
+
+<h1>Create New Post</h1>
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+  <% errors.forEach(function(error) { %>
+    <div class="alert error"><%= error.msg %></div>
+  <% }); %>
+<% } %>
+<form action="/posts/new" method="POST">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required value="<%= typeof title !== 'undefined' ? title : '' %>">
+  </div>
+  <div class="form-group">
+    <label for="body">Content:</label>
+    <textarea name="body" id="body" required><%= typeof body !== 'undefined' ? body : '' %></textarea>
+  </div>
+  <button type="submit">Create Post</button>
+</form>

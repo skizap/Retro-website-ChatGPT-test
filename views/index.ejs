@@ -1,0 +1,14 @@
+<% layout('layouts/layout') %>
+
+<h1>Welcome to the Retro Blog</h1>
+<% if (posts.length > 0) { %>
+  <% posts.forEach(function(post) { %>
+    <div class="post">
+      <h2><a href="/post/<%= post._id %>"><%= post.title %></a></h2>
+      <p><%= post.body.substring(0, 200) %>...</p>
+      <p><small>By <%= post.author.name %> on <%= post.date.toDateString() %></small></p>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>No posts have been published yet.</p>
+<% } %>

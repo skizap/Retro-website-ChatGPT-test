@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% if (title) { %>
+    <title><%= title %> - Retro Blog</title>
+  <% } else { %>
+    <title>Retro Blog</title>
+  <% } %>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/">Retro Blog</a>
+      <div class="nav-links">
+        <% if (user) { %>
+          <a href="/dashboard">Dashboard</a>
+          <a href="/users/logout">Logout</a>
+        <% } else { %>
+          <a href="/users/login">Login</a>
+          <a href="/users/register">Register</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <% if (success_msg) { %>
+      <div class="alert success"><%= success_msg %></div>
+    <% } %>
+    <% if (error_msg) { %>
+      <div class="alert error"><%= error_msg %></div>
+    <% } %>
+    <% if (error) { %>
+      <div class="alert error"><%= error %></div>
+    <% } %>
+    <%- body %>
+  </div>
+</body>
+</html>

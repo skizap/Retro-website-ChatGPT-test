@@ -1,0 +1,5 @@
+<% layout('layouts/layout') %>
+
+<h1><%= post.title %></h1>
+<p><%= post.body %></p>
+<p><small>By <%= post.author.name %> on <%= post.date.toDateString() %></small></p>

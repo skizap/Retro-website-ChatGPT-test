@@ -1,0 +1,23 @@
+<% layout('layouts/layout') %>
+
+<h1>Dashboard</h1>
+<p>Welcome, <%= user.name %>!</p>
+<a href="/posts/new">Create New Post</a>
+<h2>Your Posts</h2>
+<% if (posts && posts.length > 0) { %>
+  <% posts.forEach(function(post) { %>
+    <div class="post">
+      <h3><a href="/post/<%= post._id %>"><%= post.title %></a></h3>
+      <p><%= post.body.substring(0, 100) %>...</p>
+      <p>
+        <small>Posted on <%= post.date.toDateString() %></small>
+      </p>
+      <a href="/posts/edit/<%= post._id %>">Edit</a>
+      <form action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  <% }); %>
+<% } else { %>
+  <p>You have not created any posts yet.</p>
+<% } %>
